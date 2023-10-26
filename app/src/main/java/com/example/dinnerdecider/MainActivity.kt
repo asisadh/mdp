@@ -48,41 +48,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Column {
-        Column(
-            modifier = Modifier.padding(20.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            val newFood = remember { mutableStateOf(TextFieldValue()) }
 
-
-
-            TextField(
-                label = { Text(text = "add new Food...") },
-                value = newFood.value,
-                onValueChange = { newFood.value = it })
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp),
-                onClick = { }) {
-                Text(text = "ADD FOOD")
-            }
-
-            Spacer(modifier = Modifier.height(40.dp))
-        }
-
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp),
-            shape = RectangleShape,
-            onClick = { }) {
-            Text(text = "DECIDE!")
-        }
     }
 }
 
