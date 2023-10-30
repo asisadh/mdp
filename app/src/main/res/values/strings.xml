@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DinnerDecider</string>
+    <string name="dd_logo_description">Logo Image</string>
 </resources>
