@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+    <EditText
+        android:id="@+id/android_version_txt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Enter Android Version"/>
+    <EditText
+        android:id="@+id/android_code_name_txt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Enter Android Code Name"/>
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Add"/>
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:paddingTop="16dp">
+        <TableRow>
+            <TextView
+                android:text="Version"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@color/purple_200"/>
+            <TextView
+                android:text="CodeName"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@color/teal_200"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Android 9.0"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@color/purple_200"/>
+            <TextView
+                android:text="Pie"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@color/teal_200"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Android 8.0"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@color/purple_200"/>
+            <TextView
+                android:text="Oreo"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@color/teal_200"/>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
