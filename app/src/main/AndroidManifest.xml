@@ -23,6 +23,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".WalmartRegisterPage"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.DinnerDecider"/>
+        <activity
+            android:name=".WalmartForgotPasswordPage"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.DinnerDecider"/>
+        <activity
+            android:name=".ShoppingCategoryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.DinnerDecider"/>
     </application>
-
 </manifest>

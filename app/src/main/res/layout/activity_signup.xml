@@ -21,10 +21,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign in to your account"
+            android:text="Create your account"
             android:textSize="25sp"
             android:layout_marginTop="16dp"
             android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="* required field"
+            android:textSize="13sp"
+            android:layout_marginTop="16dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,8 +44,40 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email address (required)"
+                android:text="First name*"
                 android:textSize="15sp"/>
+            <EditText
+                android:id="@+id/firstName"
+                android:hint="first name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/round_corner_box"
+                android:layout_marginTop="5dp"
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last name*"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:id="@+id/lastname"
+                android:hint="last name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/round_corner_box"
+                android:layout_marginTop="5dp"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email address*"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"/>
             <EditText
                 android:id="@+id/username"
                 android:hint="email"
@@ -52,7 +91,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password (required)"
+                android:text="Password*"
                 android:textSize="15sp"
                 android:layout_marginTop="10dp"/>
             <EditText
@@ -65,61 +104,13 @@
                 android:layout_marginTop="5dp"
                 android:paddingLeft="5dp"
                 />
-            <TextView
-                android:id="@+id/forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forgot password?"
-                android:textColor="#86BDFF"
-                android:textSize="15sp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="right"
-                android:autoLink="all"
-                android:clickable="true"/>
-            <Button
-                android:id="@+id/login"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="Sign In"
-                android:background="@drawable/login_button"
-                android:layout_marginTop="50dp"/>
-            <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                >
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#B5B5B5"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Don't have and Account?"
-                    android:textSize="15sp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#B5B5B5"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"/>
-            </LinearLayout>
             <Button
                 android:id="@+id/signup"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="Create a new account"
-                android:background="@drawable/round_corner_box"
-                android:textColor="#00AFF4"
-                android:layout_marginTop="50dp"/>
+                android:text="Create Account"
+                android:background="@drawable/login_button"
+                android:layout_marginTop="10dp"/>
         </LinearLayout>
-
     </LinearLayout>
-
-
 </LinearLayout>
