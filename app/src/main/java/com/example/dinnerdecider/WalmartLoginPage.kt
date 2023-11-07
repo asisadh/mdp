@@ -1,5 +1,6 @@
 package com.example.dinnerdecider
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,13 +10,14 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dinnerdecider.entity.User
 
 class WalmartLoginPage: ComponentActivity(), View.OnClickListener  {
 
 //    lateinit var binding: ActivityMainBinding
 
-    private val users = arrayOf(User( "Wall", "Mart", "walmart1@walmart.com","121212"),
+    private var users = arrayOf(User( "Wall", "Mart", "walmart1@walmart.com","121212"),
         User("Wall", "Mart","walmart2@walmart.com","121212"),
         User("Wall", "Mart","walmart3@walmart.com","121212"),
         User("Wall", "Mart","walmart4@walmart.com","121212"),
@@ -80,11 +82,26 @@ class WalmartLoginPage: ComponentActivity(), View.OnClickListener  {
 
     private fun redirectToRegisterActivity(){
         val intent = Intent(this, WalmartRegisterPage::class.java)
-        startActivity(intent)
+        resultLauncher.launch(intent)
     }
 
     private fun redirectToForgotPasswordActivity(){
         val intent = Intent(this, WalmartForgotPasswordPage::class.java)
+        intent.putExtra("users", users)
         startActivity(intent)
+    }
+
+    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // There are no request codes
+            val data: Intent? = result.data
+            val user = data?.getSerializableExtra("user") as User
+            addUserToDatabasse(user)
+        }
+    }
+
+    private fun addUserToDatabasse(user: User){
+        users += user
+        txtUserName?.setText(user.email)
     }
 }

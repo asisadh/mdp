@@ -6,13 +6,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.dinnerdecider.entity.User
 
 class WalmartForgotPasswordPage: ComponentActivity() {
 
-    private var txtEmail: EditText? = null;
+    private var txtEmail: EditText? = null
+    private var users: Array<User> = arrayOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
+
+        users = intent.getSerializableExtra("users") as Array<User>
 
         txtEmail = findViewById(R.id.txtEmail)
 
@@ -25,28 +29,26 @@ class WalmartForgotPasswordPage: ComponentActivity() {
 
     private fun sendEmail(){
         if(txtEmail?.text.toString().isNotEmpty())
-            sendPasswordInEmail()
+            sendIfEmailExist()
         else
             Toast.makeText(this, "Please provide a valid email address", Toast.LENGTH_SHORT).show()
     }
 
-    // not an actual implementation
-    // but could have passed the list from login activity
-    // list of the stored user in intent
-    // then filter out that
-    // will do that later
-    // could not finish that in the deadline.
-    private fun sendPasswordInEmail(){
-        val email = Intent(Intent.ACTION_SEND)
-        email.putExtra(Intent.EXTRA_EMAIL, txtEmail?.text.toString())
-        email.putExtra(Intent.EXTRA_SUBJECT, "You have requested your password.")
-        email.putExtra(Intent.EXTRA_TEXT, android.R.id.message)
+    private fun sendIfEmailExist(){
+        val user: User? = users.find { user -> user.email == txtEmail?.text.toString() }
+        if (user != null){
+            sendPasswordInEmail(user.email)
+        }else{
+            Toast.makeText(this, "Could not found the email address", Toast.LENGTH_SHORT).show()
+        }
+    }
 
-        //need this to prompts email client only
-
-        //need this to prompts email client only
-        email.type = "message/rfc822"
-
-        startActivity(Intent.createChooser(email, "Choose an Email client :"))
+    private fun sendPasswordInEmail(email: String){
+        val emailIntent = Intent(Intent.ACTION_SEND)
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, email)
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "You have requested your password.")
+        emailIntent.putExtra(Intent.EXTRA_TEXT, android.R.id.message)
+        emailIntent.type = "message/rfc822"
+        startActivity(Intent.createChooser(emailIntent, "Choose an Email client :"))
     }
 }

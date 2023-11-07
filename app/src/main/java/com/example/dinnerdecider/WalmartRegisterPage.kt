@@ -1,17 +1,16 @@
 package com.example.dinnerdecider
 
-import android.R.id.message
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.dinnerdecider.entity.User
 
 
 class WalmartRegisterPage: ComponentActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,20 +28,23 @@ class WalmartRegisterPage: ComponentActivity() {
                 txtLastName?.text.toString().isNotEmpty() &&
                 txtEmail?.text.toString().isNotEmpty() &&
                 txtPassword?.text.toString().isNotEmpty()){
-                register(txtEmail?.text.toString())
+                val user = User(txtFirstName?.text.toString(),
+                    txtLastName?.text.toString(),
+                    txtEmail?.text.toString(),
+                    txtPassword?.text.toString(),
+                    )
+                register(user)
             }else{
                 Toast.makeText(applicationContext,"Please provide all required info",Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    // not exactly storing the user, but as user is tight coupled with login activity, need to do some workaround on that
-    // to make that work
-    private fun register(username: String){
-        val intent = Intent(this, ShoppingCategoryActivity::class.java)
-        intent.putExtra("username", username)
-        startActivity(intent)
+    private fun register(user: User){
+        val intent = Intent()
+        intent.putExtra("user", user)
+        setResult(Activity.RESULT_OK, intent)
+        Toast.makeText(applicationContext,"Successfully registered!, Please use the credential to login.",Toast.LENGTH_SHORT).show()
         finish()
     }
-
 }
