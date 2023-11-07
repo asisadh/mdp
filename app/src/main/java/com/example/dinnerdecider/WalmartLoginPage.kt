@@ -96,11 +96,11 @@ class WalmartLoginPage: ComponentActivity(), View.OnClickListener  {
             // There are no request codes
             val data: Intent? = result.data
             val user = data?.getSerializableExtra("user") as User
-            addUserToDatabasse(user)
+            addUserToDatabase(user)
         }
     }
 
-    private fun addUserToDatabasse(user: User){
+    private fun addUserToDatabase(user: User){
         users += user
         txtUserName?.setText(user.email)
     }
